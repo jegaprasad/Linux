@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linux Commands Quiz</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+    h1 { color: #333; }
+    .question { margin-bottom: 20px; background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1); }
+    .correct { color: green; }
+    .incorrect { color: red; }
+    .score { font-weight: bold; margin-top: 20px; }
+    button { padding: 10px 20px; font-size: 16px; border: none; background-color: #4CAF50; color: white; border-radius: 5px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <h1>Linux Commands Quiz</h1>
+  <form id="quizForm">
+    <div id="questions"></div>
+    <button type="button" onclick="submitQuiz()">Submit</button>
+  </form>
+  <div class="score" id="score"></div>
+  <script>
+    const questions = [
+      { q: "Which command is used to compress files using zip?", a: "zip" },
+      { q: "Which command is used to extract .zip files?", a: "unzip" },
+      { q: "How do you extract a .tar.gz file?", a: "tar -xvzf filename.tar.gz" },
+      { q: "How to create a .tar.gz archive?", a: "tar -cvzf archive.tar.gz files" },
+      { q: "Which command extracts a .gz file?", a: "gunzip filename.gz" },
+      { q: "Which command is used to list the contents of a zip file?", a: "unzip -l filename.zip" },
+      { q: "What is a symbolic link?", a: "A pointer to another file or directory" },
+      { q: "How to create a symbolic link?", a: "ln -s target linkname" },
+      { q: "What is a hard link?", a: "An additional name for an existing file" },
+      { q: "How to create a hard link?", a: "ln target linkname" },
+      { q: "Which command shows file permissions?", a: "ls -l" },
+      { q: "How to change file permissions?", a: "chmod permissions filename" },
+      { q: "What does 'chmod 755 file' do?", a: "Sets rwxr-xr-x permissions" },
+      { q: "What is the command to change file ownership?", a: "chown user:group filename" },
+      { q: "What does 'chmod 644 file' mean?", a: "rw-r--r-- permissions" },
+      { q: "What does 'chmod 777 file' do?", a: "Grants all permissions to everyone" },
+      { q: "How to find a file by name?", a: "find / -name filename" },
+      { q: "How to find all .txt files?", a: "find / -name '*.txt'" },
+      { q: "Find files modified in last 1 day", a: "find / -mtime -1" },
+      { q: "Find files larger than 1GB", a: "find / -size +1G" },
+      { q: "Find files with 777 permissions", a: "find / -perm 0777" },
+      { q: "Find directories only", a: "find / -type d" },
+      { q: "Find symbolic links", a: "find / -type l" },
+      { q: "Find files owned by user 'john'", a: "find / -user john" },
+      { q: "Find empty files", a: "find / -empty" },
+      { q: "Zip multiple files", a: "zip archive.zip file1 file2" },
+      { q: "Unzip to specific directory", a: "unzip file.zip -d /path" },
+      { q: "Extract .tar.gz to specific path", a: "tar -xvzf file.tar.gz -C /path" },
+      { q: "Set directory permission to 755", a: "chmod 755 dirname" },
+      { q: "List all links in a directory", a: "ls -l | grep '^l'" }
+    ];
+
+    const questionsDiv = document.getElementById("questions");
+    questions.forEach((item, index) => {
+      questionsDiv.innerHTML += `
+        <div class="question">
+          <label for="q${index}">${index + 1}. ${item.q}</label><br />
+          <input type="text" id="q${index}" name="q${index}" />
+          <div id="feedback${index}"></div>
+        </div>
+      `;
+    });
+
+    function submitQuiz() {
+      let score = 0;
+      questions.forEach((item, index) => {
+        const userAnswer = document.getElementById("q" + index).value.trim().toLowerCase();
+        const correctAnswer = item.a.trim().toLowerCase();
+        const feedback = document.getElementById("feedback" + index);
+        if (userAnswer === correctAnswer) {
+          score++;
+          feedback.innerHTML = "✅ Correct";
+          feedback.className = "correct";
+        } else {
+          feedback.innerHTML = `❌ Incorrect. Correct answer: ${item.a}`;
+          feedback.className = "incorrect";
+        }
+      });
+      document.getElementById("score").innerText = `Your score: ${score} / ${questions.length}`;
+    }
+  </script>
+</body>
+</html>

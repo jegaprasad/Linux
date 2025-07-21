@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Linux Folder Operations Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background-color: #f0f0f0;
+    }
+    .question {
+      background: white;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .result {
+      margin-top: 20px;
+      padding: 15px;
+      background-color: #e0ffe0;
+      border: 1px solid #00cc00;
+      border-radius: 8px;
+      display: none;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 16px;
+      border: none;
+      background-color: #007BFF;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Linux Folder Operations Quiz</h1>
+  <form id="quizForm">
+
+    <div class="question">
+      <p>1. Which command is used to create a new folder in Linux?</p>
+      <input type="radio" name="q1" value="mkdir"> mkdir<br>
+      <input type="radio" name="q1" value="touch"> touch<br>
+      <input type="radio" name="q1" value="cp"> cp<br>
+    </div>
+
+    <div class="question">
+      <p>2. How do you move a folder in Linux?</p>
+      <input type="radio" name="q2" value="mv"> mv<br>
+      <input type="radio" name="q2" value="cp"> cp<br>
+      <input type="radio" name="q2" value="rm"> rm<br>
+    </div>
+
+    <div class="question">
+      <p>3. What is the command to copy a folder?</p>
+      <input type="radio" name="q3" value="cp -r"> cp -r<br>
+      <input type="radio" name="q3" value="mv"> mv<br>
+      <input type="radio" name="q3" value="mkdir"> mkdir<br>
+    </div>
+
+    <div class="question">
+      <p>4. Which command is used to remove a folder?</p>
+      <input type="radio" name="q4" value="rm -r"> rm -r<br>
+      <input type="radio" name="q4" value="rmdir"> rmdir<br>
+      <input type="radio" name="q4" value="mv"> mv<br>
+    </div>
+
+    <div class="question">
+      <p>5. What does the `-p` flag do with mkdir?</p>
+      <input type="radio" name="q5" value="Creates parent directories"> Creates parent directories<br>
+      <input type="radio" name="q5" value="Prints directory contents"> Prints directory contents<br>
+      <input type="radio" name="q5" value="Protects the directory"> Protects the directory<br>
+    </div>
+
+    <div class="question">
+      <p>6. What happens if you use `rm -rf /` as root?</p>
+      <input type="radio" name="q6" value="Deletes everything on the system"> Deletes everything on the system<br>
+      <input type="radio" name="q6" value="Deletes root only"> Deletes root only<br>
+      <input type="radio" name="q6" value="Does nothing"> Does nothing<br>
+    </div>
+
+    <div class="question">
+      <p>7. Which command removes an empty directory?</p>
+      <input type="radio" name="q7" value="rmdir"> rmdir<br>
+      <input type="radio" name="q7" value="rm -f"> rm -f<br>
+      <input type="radio" name="q7" value="mv"> mv<br>
+    </div>
+
+    <div class="question">
+      <p>8. What does `cp -r folder1 folder2` do?</p>
+      <input type="radio" name="q8" value="Copies folder1 into folder2"> Copies folder1 into folder2<br>
+      <input type="radio" name="q8" value="Renames folder1"> Renames folder1<br>
+      <input type="radio" name="q8" value="Deletes folder2"> Deletes folder2<br>
+    </div>
+
+    <div class="question">
+      <p>9. What happens if you run `mkdir existing_folder`?</p>
+      <input type="radio" name="q9" value="Error if folder exists"> Error if folder exists<br>
+      <input type="radio" name="q9" value="Folder overwritten"> Folder overwritten<br>
+      <input type="radio" name="q9" value="Folder renamed"> Folder renamed<br>
+    </div>
+
+    <div class="question">
+      <p>10. What is the purpose of the `-f` flag in rm?</p>
+      <input type="radio" name="q10" value="Force deletion"> Force deletion<br>
+      <input type="radio" name="q10" value="Find folders"> Find folders<br>
+      <input type="radio" name="q10" value="Format drive"> Format drive<br>
+    </div>
+
+    <div class="question">
+      <p>11. Which command creates multiple directories at once?</p>
+      <input type="radio" name="q11" value="mkdir dir1 dir2"> mkdir dir1 dir2<br>
+      <input type="radio" name="q11" value="cp dir1 dir2"> cp dir1 dir2<br>
+      <input type="radio" name="q11" value="mv dir1 dir2"> mv dir1 dir2<br>
+    </div>
+
+    <div class="question">
+      <p>12. How can you rename a folder?</p>
+      <input type="radio" name="q12" value="mv oldname newname"> mv oldname newname<br>
+      <input type="radio" name="q12" value="cp oldname newname"> cp oldname newname<br>
+      <input type="radio" name="q12" value="rm oldname"> rm oldname<br>
+    </div>
+
+    <div class="question">
+      <p>13. What does `ls` show?</p>
+      <input type="radio" name="q13" value="Lists directory contents"> Lists directory contents<br>
+      <input type="radio" name="q13" value="Creates directory"> Creates directory<br>
+      <input type="radio" name="q13" value="Removes directory"> Removes directory<br>
+    </div>
+
+    <div class="question">
+      <p>14. What does `pwd` show?</p>
+      <input type="radio" name="q14" value="Current directory path"> Current directory path<br>
+      <input type="radio" name="q14" value="Parent directory"> Parent directory<br>
+      <input type="radio" name="q14" value="Permission of folder"> Permission of folder<br>
+    </div>
+
+    <div class="question">
+      <p>15. How can you remove a folder and its contents recursively?</p>
+      <input type="radio" name="q15" value="rm -r folder"> rm -r folder<br>
+      <input type="radio" name="q15" value="rmdir folder"> rmdir folder<br>
+      <input type="radio" name="q15" value="cp -r folder"> cp -r folder<br>
+    </div>
+
+    <button type="button" onclick="checkAnswers()">Submit</button>
+  </form>
+
+  <div class="result" id="result"></div>
+
+  <script>
+    function checkAnswers() {
+      const answers = {
+        q1: "mkdir",
+        q2: "mv",
+        q3: "cp -r",
+        q4: "rm -r",
+        q5: "Creates parent directories",
+        q6: "Deletes everything on the system",
+        q7: "rmdir",
+        q8: "Copies folder1 into folder2",
+        q9: "Error if folder exists",
+        q10: "Force deletion",
+        q11: "mkdir dir1 dir2",
+        q12: "mv oldname newname",
+        q13: "Lists directory contents",
+        q14: "Current directory path",
+        q15: "rm -r folder"
+      };
+
+      let score = 0;
+      let total = Object.keys(answers).length;
+      let output = "<h2>Results:</h2><ul>";
+
+      for (let key in answers) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if (selected) {
+          if (selected.value === answers[key]) {
+            score++;
+            output += `<li>Question ${key.slice(1)}: Correct</li>`;
+          } else {
+            output += `<li>Question ${key.slice(1)}: Incorrect (Correct: ${answers[key]})</li>`;
+          }
+        } else {
+          output += `<li>Question ${key.slice(1)}: No answer selected</li>`;
+        }
+      }
+      output += `</ul><p>Your score: ${score} / ${total}</p>`;
+
+      const resultDiv = document.getElementById("result");
+      resultDiv.innerHTML = output;
+      resultDiv.style.display = "block";
+    }
+  </script>
+</body>
+</html>

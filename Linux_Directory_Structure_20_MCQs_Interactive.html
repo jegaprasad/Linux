@@ -1,0 +1,247 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Directory Structure – 20 MCQs</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    .question {
+      background: #fff;
+      margin-bottom: 20px;
+      padding: 15px;
+      border-left: 5px solid #3498db;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .options label {
+      display: block;
+      margin: 8px 0;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function checkAnswer(qNum, correct) {
+      const radios = document.getElementsByName('q' + qNum);
+      let selected = '';
+      for (const r of radios) {
+        if (r.checked) selected = r.value;
+      }
+      if (selected === correct) {
+        alert("✅ Correct Answer!");
+      } else {
+        alert("❌ Incorrect. Try again.");
+      }
+    }
+  </script>
+</head>
+<body>
+<h1>Linux Directory Structure – 20 MCQs</h1>
+<div class="question">
+<strong>1. What is the purpose of the /etc directory?</strong>
+<form>
+<label><input type="radio" name="q1" value="A"> A. Contains temporary files</label>
+<label><input type="radio" name="q1" value="B"> B. Contains user data</label>
+<label><input type="radio" name="q1" value="C"> C. Contains configuration files and scripts</label>
+<label><input type="radio" name="q1" value="D"> D. Contains boot files</label>
+<button type="button" onclick="checkAnswer(1, 'C')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>2. Which directory stores system log files?</strong>
+<form>
+<label><input type="radio" name="q2" value="A"> A. /usr/log</label>
+<label><input type="radio" name="q2" value="B"> B. /var/log</label>
+<label><input type="radio" name="q2" value="C"> C. /tmp/log</label>
+<label><input type="radio" name="q2" value="D"> D. /etc/logs</label>
+<button type="button" onclick="checkAnswer(2, 'B')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>3. Where is the Linux kernel typically located?</strong>
+<form>
+<label><input type="radio" name="q3" value="A"> A. /lib</label>
+<label><input type="radio" name="q3" value="B"> B. /boot</label>
+<label><input type="radio" name="q3" value="C"> C. /kernel</label>
+<label><input type="radio" name="q3" value="D"> D. /etc</label>
+<button type="button" onclick="checkAnswer(3, 'B')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>4. What does the /home directory store?</strong>
+<form>
+<label><input type="radio" name="q4" value="A"> A. System binaries</label>
+<label><input type="radio" name="q4" value="B"> B. User home directories</label>
+<label><input type="radio" name="q4" value="C"> C. Configuration files</label>
+<label><input type="radio" name="q4" value="D"> D. Shared libraries</label>
+<button type="button" onclick="checkAnswer(4, 'B')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>5. What is the /root directory?</strong>
+<form>
+<label><input type="radio" name="q5" value="A"> A. Root of the filesystem</label>
+<label><input type="radio" name="q5" value="B"> B. User login directory</label>
+<label><input type="radio" name="q5" value="C"> C. Superuser’s home directory</label>
+<label><input type="radio" name="q5" value="D"> D. Kernel directory</label>
+<button type="button" onclick="checkAnswer(5, 'C')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>6. Which directory is used to mount temporary media like USB drives?</strong>
+<form>
+<label><input type="radio" name="q6" value="A"> A. /opt</label>
+<label><input type="radio" name="q6" value="B"> B. /mnt</label>
+<label><input type="radio" name="q6" value="C"> C. /etc</label>
+<label><input type="radio" name="q6" value="D"> D. /tmp</label>
+<button type="button" onclick="checkAnswer(6, 'B')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>7. What does the /bin directory contain?</strong>
+<form>
+<label><input type="radio" name="q7" value="A"> A. Kernel modules</label>
+<label><input type="radio" name="q7" value="B"> B. Non-essential binaries</label>
+<label><input type="radio" name="q7" value="C"> C. Essential command binaries</label>
+<label><input type="radio" name="q7" value="D"> D. Only GUI tools</label>
+<button type="button" onclick="checkAnswer(7, 'C')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>8. Where are system binaries used for system administration stored?</strong>
+<form>
+<label><input type="radio" name="q8" value="A"> A. /sbin</label>
+<label><input type="radio" name="q8" value="B"> B. /usr/bin</label>
+<label><input type="radio" name="q8" value="C"> C. /lib</label>
+<label><input type="radio" name="q8" value="D"> D. /opt</label>
+<button type="button" onclick="checkAnswer(8, 'A')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>9. What is stored in /lib?</strong>
+<form>
+<label><input type="radio" name="q9" value="A"> A. Log files</label>
+<label><input type="radio" name="q9" value="B"> B. Bootloader</label>
+<label><input type="radio" name="q9" value="C"> C. Shared libraries for binaries in /bin and /sbin</label>
+<label><input type="radio" name="q9" value="D"> D. Temporary files</label>
+<button type="button" onclick="checkAnswer(9, 'C')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>10. What is /opt used for?</strong>
+<form>
+<label><input type="radio" name="q10" value="A"> A. Mounting media</label>
+<label><input type="radio" name="q10" value="B"> B. Optional or third-party software</label>
+<label><input type="radio" name="q10" value="C"> C. Kernel source</label>
+<label><input type="radio" name="q10" value="D"> D. Logging</label>
+<button type="button" onclick="checkAnswer(10, 'B')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>11. What is /usr primarily used for?</strong>
+<form>
+<label><input type="radio" name="q11" value="A"> A. Kernel files</label>
+<label><input type="radio" name="q11" value="B"> B. Device drivers</label>
+<label><input type="radio" name="q11" value="C"> C. User-related programs and data</label>
+<label><input type="radio" name="q11" value="D"> D. System configuration</label>
+<button type="button" onclick="checkAnswer(11, 'C')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>12. What does the /tmp directory store?</strong>
+<form>
+<label><input type="radio" name="q12" value="A"> A. Root user data</label>
+<label><input type="radio" name="q12" value="B"> B. Libraries</label>
+<label><input type="radio" name="q12" value="C"> C. Temporary files</label>
+<label><input type="radio" name="q12" value="D"> D. Configuration backups</label>
+<button type="button" onclick="checkAnswer(12, 'C')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>13. What is the purpose of /dev?</strong>
+<form>
+<label><input type="radio" name="q13" value="A"> A. Device drivers</label>
+<label><input type="radio" name="q13" value="B"> B. Log files</label>
+<label><input type="radio" name="q13" value="C"> C. Device files (representing hardware)</label>
+<label><input type="radio" name="q13" value="D"> D. Temporary storage</label>
+<button type="button" onclick="checkAnswer(13, 'C')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>14. Which directory contains real-time system and process info?</strong>
+<form>
+<label><input type="radio" name="q14" value="A"> A. /log</label>
+<label><input type="radio" name="q14" value="B"> B. /sys</label>
+<label><input type="radio" name="q14" value="C"> C. /dev</label>
+<label><input type="radio" name="q14" value="D"> D. /proc</label>
+<button type="button" onclick="checkAnswer(14, 'D')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>15. What is /srv used for?</strong>
+<form>
+<label><input type="radio" name="q15" value="A"> A. Storing services data like web/ftp content</label>
+<label><input type="radio" name="q15" value="B"> B. Backup data</label>
+<label><input type="radio" name="q15" value="C"> C. Mount points</label>
+<label><input type="radio" name="q15" value="D"> D. Admin scripts</label>
+<button type="button" onclick="checkAnswer(15, 'A')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>16. Where would you likely find the GRUB configuration file?</strong>
+<form>
+<label><input type="radio" name="q16" value="A"> A. /boot</label>
+<label><input type="radio" name="q16" value="B"> B. /etc/grub</label>
+<label><input type="radio" name="q16" value="C"> C. /boot/grub</label>
+<label><input type="radio" name="q16" value="D"> D. /usr/grub</label>
+<button type="button" onclick="checkAnswer(16, 'C')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>17. What is the function of /var/spool?</strong>
+<form>
+<label><input type="radio" name="q17" value="A"> A. Temporary mount points</label>
+<label><input type="radio" name="q17" value="B"> B. Kernel spool</label>
+<label><input type="radio" name="q17" value="C"> C. Stores print jobs, mail queues, etc.</label>
+<label><input type="radio" name="q17" value="D"> D. User login information</label>
+<button type="button" onclick="checkAnswer(17, 'C')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>18. Where are shared 64-bit system libraries typically located?</strong>
+<form>
+<label><input type="radio" name="q18" value="A"> A. /lib</label>
+<label><input type="radio" name="q18" value="B"> B. /lib64</label>
+<label><input type="radio" name="q18" value="C"> C. /usr/lib</label>
+<label><input type="radio" name="q18" value="D"> D. /boot/lib</label>
+<button type="button" onclick="checkAnswer(18, 'B')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>19. What is /run used for in modern Linux systems?</strong>
+<form>
+<label><input type="radio" name="q19" value="A"> A. Kernel logs</label>
+<label><input type="radio" name="q19" value="B"> B. User scripts</label>
+<label><input type="radio" name="q19" value="C"> C. Runtime data for system processes</label>
+<label><input type="radio" name="q19" value="D"> D. Boot logs</label>
+<button type="button" onclick="checkAnswer(19, 'C')">Check Answer</button>
+</form>
+</div>
+<div class="question">
+<strong>20. What is /media commonly used for?</strong>
+<form>
+<label><input type="radio" name="q20" value="A"> A. Mount points for removable media like CDs and USBs</label>
+<label><input type="radio" name="q20" value="B"> B. Logging media activities</label>
+<label><input type="radio" name="q20" value="C"> C. Configuration of media devices</label>
+<label><input type="radio" name="q20" value="D"> D. Installing system updates</label>
+<button type="button" onclick="checkAnswer(20, 'A')">Check Answer</button>
+</form>
+</div>
+</body></html>

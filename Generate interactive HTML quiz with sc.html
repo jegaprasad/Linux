@@ -1,0 +1,122 @@
+# Generate interactive HTML quiz with score tracking for 30 basic Linux command questions
+
+questions = [
+    ("Which command is used to list directory contents?",
+     ["A. pwd", "B. ls", "C. cat", "D. dir"], "B"),
+    ("What does the `pwd` command do?",
+     ["A. Prints write directory", "B. Displays previous working directory", "C. Prints working directory", "D. Changes directory"], "C"),
+    ("Which command is used to create a new directory?",
+     ["A. mkdir", "B. touch", "C. dir", "D. mkfile"], "A"),
+    ("How do you change to another directory?",
+     ["A. chdir", "B. cd", "C. mv", "D. change"], "B"),
+    ("What does the `touch` command do?",
+     ["A. Opens a file", "B. Updates access time only", "C. Creates an empty file", "D. Copies a file"], "C"),
+    ("Which command is used to display file contents?",
+     ["A. ls", "B. grep", "C. cat", "D. mv"], "C"),
+    ("How to copy files in Linux?",
+     ["A. cp", "B. copy", "C. mv", "D. cpy"], "A"),
+    ("What is the command to move or rename a file?",
+     ["A. mv", "B. cp", "C. rename", "D. move"], "A"),
+    ("Which command deletes a file?",
+     ["A. del", "B. erase", "C. rm", "D. remove"], "C"),
+    ("How to delete a directory and its contents?",
+     ["A. rm -r dir", "B. del dir", "C. rmdir -r dir", "D. rm -d dir"], "A"),
+    ("What does `chmod` do?",
+     ["A. Modifies user password", "B. Changes file permissions", "C. Compresses a file", "D. Renames a file"], "B"),
+    ("How do you see hidden files in a directory?",
+     ["A. ls -a", "B. ls -h", "C. show hidden", "D. view .files"], "A"),
+    ("What is the use of `grep`?",
+     ["A. Display directory structure", "B. Search text within files", "C. Modify files", "D. Find large files"], "B"),
+    ("Which command shows current running processes?",
+     ["A. jobs", "B. top", "C. kill", "D. load"], "B"),
+    ("Which command shuts down the system?",
+     ["A. poweroff", "B. halt", "C. shutdown", "D. reboot"], "C"),
+    ("What does `df` command display?",
+     ["A. Disk usage", "B. File details", "C. Disk space", "D. Deleted files"], "C"),
+    ("What is the function of `du`?",
+     ["A. Displays disk usage of files/directories", "B. Deletes unused files", "C. Updates user permissions", "D. Displays users"], "A"),
+    ("What does `man` command do?",
+     ["A. Displays manual pages", "B. Displays system logs", "C. Shows hardware info", "D. Installs software"], "A"),
+    ("Which command is used to check current user?",
+     ["A. user", "B. me", "C. whoami", "D. who"], "C"),
+    ("What does `history` command show?",
+     ["A. Shell history of executed commands", "B. History of logged-in users", "C. File access logs", "D. Directory history"], "A"),
+    ("How do you view real-time logs of a file?",
+     ["A. cat file.log", "B. less file.log", "C. tail -f file.log", "D. grep file.log"], "C"),
+    ("Which command is used to extract a `.tar.gz` file?",
+     ["A. tar -xvf file.tar.gz", "B. gunzip file.gz", "C. unzip file.zip", "D. tar -xf file"], "A"),
+    ("What does `ps` command do?",
+     ["A. Displays port status", "B. Lists current processes", "C. Kills processes", "D. Shows permission summary"], "B"),
+    ("What does `kill` do in Linux?",
+     ["A. Terminates a session", "B. Deletes a user", "C. Ends a process by PID", "D. Deletes a file"], "C"),
+    ("How to check current date and time?",
+     ["A. time", "B. datetime", "C. now", "D. date"], "D"),
+    ("What is `uname -a` used for?",
+     ["A. Display username", "B. Show system info", "C. Update software", "D. Check uptime"], "B"),
+    ("How do you install a package in Ubuntu using terminal?",
+     ["A. yum install", "B. install packagename", "C. apt install", "D. pacman -S"], "C"),
+    ("Which command will recursively list all files in a directory?",
+     ["A. ls -r", "B. ls -la", "C. find .", "D. listall"], "C"),
+    ("How to switch to the root user account?",
+     ["A. login root", "B. sudo -s", "C. su -", "D. root login"], "C"),
+    ("What is `echo` used for?",
+     ["A. Display output to terminal", "B. Print error logs", "C. Show bash history", "D. Generate files"], "A")
+]
+
+# Generate HTML content
+html_score = """
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Basic Linux Commands Quiz</title>
+<style>
+  body { font-family: Arial; background: #f9f9f9; padding: 20px; }
+  h1 { text-align: center; }
+  .question { background: #fff; padding: 15px; margin-bottom: 15px; border-left: 5px solid #3498db; }
+  .question label { display: block; margin: 8px 0; }
+  button { background: #3498db; color: white; padding: 10px 20px; border: none; cursor: pointer; }
+  #score { font-weight: bold; color: green; margin-top: 20px; text-align: center; }
+</style>
+</head>
+<body>
+<h1>Basic Linux Commands - 30 MCQ Quiz</h1>
+<form id="quizForm">
+"""
+
+for i, (question, options, answer) in enumerate(questions, 1):
+    html_score += f'<div class="question"><strong>{i}. {question}</strong><br>'
+    for opt in options:
+        val = opt.split(".")[0]
+        html_score += f'<label><input type="radio" name="q{i}" value="{val}"> {opt}</label>'
+    html_score += f'<input type="hidden" id="a{i}" value="{answer}">'
+    html_score += '</div>'
+
+html_score += """
+<div style="text-align: center;">
+  <button type="button" onclick="calculateScore()">Submit Answers</button>
+  <div id="score"></div>
+</div>
+</form>
+<script>
+function calculateScore() {
+  let total = 30, score = 0;
+  for (let i = 1; i <= total; i++) {
+    let radios = document.getElementsByName("q" + i);
+    let selected = '';
+    for (let r of radios) if (r.checked) selected = r.value;
+    let correct = document.getElementById("a" + i).value;
+    if (selected === correct) score++;
+  }
+  document.getElementById("score").innerHTML = "You scored " + score + " out of " + total + ".";
+}
+</script>
+</body></html>
+"""
+
+# Save HTML to file
+file_path = "/mnt/data/Linux_Basic_Commands_30_MCQs_Quiz.html"
+with open(file_path, "w") as f:
+    f.write(html_score)
+
+file_path

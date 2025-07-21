@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Reference</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css">
+</head>
+<body bgcolor="lightgrey">
+
+	<h1> File permission and directory permission </h1> 
+    <h1> Ownership permissions</h1>
+
+<br>
+d----> folder
+<br>
+- =====> file
+<br>
+l--------link file
+<br> 
+b------block device
+<br>
+c----char device 
+<br>
+
+<br>
+7====4210
+<br>
+4 -read ---r ---only read 
+<br>
+2--write---w----edit the file 
+<br>
+1 --execute---x----execute the files like script execute 
+<br>
+0-----nothing 
+<br>
+
+7 2 0
+-rwx  w-- w--
+<br>
+
+6 2 
+O g Oth
+ rw-  -w- r--
+ <br>
+
+
+6 5 5 
+Rw- r-x r-x
+<br>
+
+777
+^
+|
+First 3--- directory owner 
+Second 3 -----group permission 
+Third set ----others 
+<br>
+
+
+Id -a details 
+<br>
+
+<h3>Chmod ----to change the file permission</h3> 
+<br>
+Chmod 666 filename 
+<br>
+Chmod 755 file name 
+<br>
+Chmod 750 filename
+<br>
+
+<h3>Ownership change</h3> 
+<br>
+Chown sasi:sasi  filename 
+<br>
+Chown sasi:root filename 
+               |
+Owner 	Group               
+<br>
+<h3>Now change the group name</h3> 
+<br>
+Chown sasi:root filename 
+<br>
+Now change the owner name 
+<br>
+Chown root:sasi filename 
+<br>
+
+<h3>Shortcut</h3> 
+<br>
+Chown :root filename ---it will consider after : that is group so it will change group permission only 
+<br>
+Chown root filename ----not it will consider root is before : so only owner name will change 
+<br>
+Inside the folder to change the all permission use -R
+<br>
+Chmod -R 755 foldername 
+<br>
+Chown -R root:root foldername 
+<br>
+<h3> Remove the permission:</h3>
+<br>
+
+Chmod u-x  filename 
+<br>
+Chmod u+x filename 
+<br>
+Chmod g+x filename 
+ <h3>To change all  </h3>
+ <br>
+ chmod a-X filename to remove the execute permission to all user,group and others
+ <br>
+ <h1> Hard link and symbolic link</h1> 
+
+
+  
+ 
+ <h4>Inode</h4> -----all files have inode number in overall systems 
+ <br>
+ ls -li ---inode info
+ <br>
+ <h3>Inode ---contain</h3> 
+ <br>
+ Inode number 
+ File permission 
+ File ownership detail 
+ File size 
+ File type 
+ <br>
+ <h3>Inode Exclude</h3> 
+ <br>
+ File content 
+ <br>
+ File name 
+ <br>
+ ---------------------------------------------------------------------------------
+ 
+ <h2>Symbolic link</h2> 
+ 
+ In windows we create a shortcut the same as called in linux in symbolic link 
+ <br>
+ If we delete the original file symbolic link will not work 
+ Both have different inode 
+ <br>
+ Cmd 
+  ln -s filename linkname 
+  <br>
+ Hard link 
+ <br>
+ Both have same inode number 
+ If we delete orginal file we can access the contet from hard link 
+ <br>
+ Cmd 
+ <br>
+  ln targetfile linkname
+  <br>
+ Consider link duplicate the file 
+ 
+ <br>
+
+
+
+ 
+ 
+
+</body>
+</html>

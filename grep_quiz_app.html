@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Grep Utility Quiz</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .question {
+      margin-bottom: 20px;
+    }
+    .question h3 {
+      margin-bottom: 10px;
+    }
+    .correct {
+      color: green;
+    }
+    .incorrect {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <h1>Grep Utility Quiz</h1>
+  <form id="quizForm">
+    <div id="quiz"></div>
+    <button type="submit">Submit</button>
+  </form>
+  <div id="result"></div>
+
+  <script>
+    const questions = [
+      {
+        question: "What does 'grep' stand for?",
+        options: ["Global Regular Expression Print", "Global Random Expression Program", "General Regular Expression Processor", "Giant Regex Parser"],
+        answer: 0
+      },
+      {
+        question: "Which flag is used with grep for ignoring case?",
+        options: ["-c", "-i", "-v", "-n"],
+        answer: 1
+      },
+      {
+        question: "What does the '-v' flag do in grep?",
+        options: ["Shows version", "Inverts the match", "Verbose mode", "Validates regex"],
+        answer: 1
+      },
+      {
+        question: "How do you search recursively using grep?",
+        options: ["-r", "-c", "-s", "-R"],
+        answer: 0
+      },
+      {
+        question: "What does the '-n' option do in grep?",
+        options: ["Shows line number", "Shows filename", "No output", "Counts lines"],
+        answer: 0
+      },
+      {
+        question: "Which option counts matching lines?",
+        options: ["-l", "-c", "-m", "-o"],
+        answer: 1
+      },
+      {
+        question: "How to match whole words in grep?",
+        options: ["-w", "-x", "-W", "-z"],
+        answer: 0
+      },
+      {
+        question: "Which grep variant supports Perl-compatible regex?",
+        options: ["grep", "egrep", "pgrep", "pcregrep"],
+        answer: 3
+      },
+      {
+        question: "Which command finds files containing 'main'?",
+        options: ["grep 'main' *", "find 'main'", "search 'main'", "main | grep"],
+        answer: 0
+      },
+      {
+        question: "How to make grep output only matching text?",
+        options: ["-m", "-b", "-o", "-e"],
+        answer: 2
+      },
+      {
+        question: "Which flag makes grep match entire lines?",
+        options: ["-l", "-x", "-m", "-z"],
+        answer: 1
+      },
+      {
+        question: "What does 'egrep' stand for?",
+        options: ["Extended grep", "Extra grep", "Exclusive grep", "Enhanced grep"],
+        answer: 0
+      },
+      {
+        question: "Which grep flag suppresses error messages?",
+        options: ["-s", "-q", "-n", "-e"],
+        answer: 0
+      },
+      {
+        question: "What does the '-l' flag do in grep?",
+        options: ["Lists only filenames with matches", "Lists line numbers", "Lists only matching text", "Lists all lines"],
+        answer: 0
+      },
+      {
+        question: "How to grep multiple patterns?",
+        options: ["-e pattern1 -e pattern2", "-m pattern1,pattern2", "-a pattern1 pattern2", "--multi pattern1 pattern2"],
+        answer: 0
+      },
+      {
+        question: "Which flag shows byte offset in grep?",
+        options: ["-b", "-o", "-f", "-i"],
+        answer: 0
+      },
+      {
+        question: "How to grep for exact string 'foo'?",
+        options: ["grep '^foo$'", "grep 'foo*'", "grep 'foo+'", "grep '?foo?'"],
+        answer: 0
+      },
+      {
+        question: "What does 'grep -q' do?",
+        options: ["Quiet (no output)", "Quick search", "Query mode", "Quoted output"],
+        answer: 0
+      },
+      {
+        question: "How to search for a pattern from a file list?",
+        options: ["grep -f file.txt", "grep -l file.txt", "grep -e file.txt", "grep file.txt"],
+        answer: 0
+      },
+      {
+        question: "How to include filenames with matches?",
+        options: ["-H", "-L", "-v", "-F"],
+        answer: 0
+      }
+    ];
+
+    const quizContainer = document.getElementById('quiz');
+
+    questions.forEach((q, i) => {
+      const div = document.createElement('div');
+      div.className = 'question';
+      div.innerHTML = `<h3>Q${i + 1}: ${q.question}</h3>` +
+        q.options.map((opt, j) => `
+          <label>
+            <input type="radio" name="q${i}" value="${j}"> ${opt}
+          </label><br>
+        `).join('');
+      quizContainer.appendChild(div);
+    });
+
+    document.getElementById('quizForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      let score = 0;
+      const resultDiv = document.getElementById('result');
+      resultDiv.innerHTML = '';
+      questions.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        const userAnswer = selected ? parseInt(selected.value) : -1;
+        const div = document.createElement('div');
+        if (userAnswer === q.answer) {
+          score++;
+          div.innerHTML = `Q${i + 1}: Correct`;
+          div.className = 'correct';
+        } else {
+          div.innerHTML = `Q${i + 1}: Incorrect (Correct: ${q.options[q.answer]})`;
+          div.className = 'incorrect';
+        }
+        resultDiv.appendChild(div);
+      });
+      const scoreDiv = document.createElement('div');
+      scoreDiv.innerHTML = `<h2>Your Score: ${score} / ${questions.length}</h2>`;
+      resultDiv.appendChild(scoreDiv);
+    });
+  </script>
+</body>
+</html>

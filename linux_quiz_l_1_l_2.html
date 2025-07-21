@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Linux Commands Quiz (L1 & L2)</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; background: #f9f9f9; }
+    .question { margin-bottom: 1.5em; background: #fff; padding: 1em; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+    .correct { color: green; font-weight: bold; }
+    .wrong { color: red; font-weight: bold; }
+    .answer-feedback { margin-top: 0.5em; }
+    button { margin-top: 0.5em; }
+  </style>
+</head>
+<body>
+  <h1>Linux Commands Quiz (Level 1 & Level 2)</h1>
+  <form id="quizForm">
+    <div id="questions"></div>
+    <button type="submit">Submit All Answers</button>
+  </form>
+
+  <script>
+    const questions = [
+      { q: "Which command is used to list files in a directory?", options: ["ls", "cd", "pwd", "rm"], answer: "ls" },
+      { q: "Which command is used to change directory?", options: ["ls", "cd", "pwd", "mkdir"], answer: "cd" },
+      { q: "What does 'pwd' stand for?", options: ["print working directory", "present write directory", "primary working disk", "print work design"], answer: "print working directory" },
+      { q: "Which command removes a file?", options: ["rm", "delete", "erase", "remove"], answer: "rm" },
+      { q: "How to create a new directory?", options: ["mkdir", "rmdir", "touchdir", "newdir"], answer: "mkdir" },
+      { q: "Which command is used to view the contents of a file?", options: ["cat", "see", "read", "open"], answer: "cat" },
+      { q: "Which command is used to copy a file?", options: ["cp", "copy", "mv", "clone"], answer: "cp" },
+      { q: "What is the use of 'mv' command?", options: ["move or rename files", "make version", "mount volume", "modify volume"], answer: "move or rename files" },
+      { q: "What does 'chmod' do?", options: ["change permissions", "change directory", "check mode", "change model"], answer: "change permissions" },
+      { q: "How to see current running processes?", options: ["ps", "top", "jobs", "all of the above"], answer: "all of the above" },
+      { q: "How do you display the first 10 lines of a file?", options: ["head", "tail", "less", "cut"], answer: "head" },
+      { q: "Which command is used to display the last lines of a file?", options: ["tail", "head", "last", "end"], answer: "tail" },
+      { q: "How do you find your current shell?", options: ["echo $SHELL", "shell", "which shell", "get shell"], answer: "echo $SHELL" },
+      { q: "Which command is used to count lines, words, and characters in a file?", options: ["wc", "count", "lines", "stat"], answer: "wc" },
+      { q: "What does 'grep' do?", options: ["search for patterns", "group files", "replace text", "generate reports"], answer: "search for patterns" },
+      { q: "Which command is used to change file ownership?", options: ["chown", "chmod", "chgrp", "owner"], answer: "chown" },
+      { q: "Which command displays disk usage?", options: ["du", "df", "disk", "ls -d"], answer: "du" },
+      { q: "What does 'df' command show?", options: ["disk space", "file system", "folder size", "disk speed"], answer: "disk space" },
+      { q: "Which command is used to archive files?", options: ["tar", "zip", "gzip", "all of the above"], answer: "all of the above" },
+      { q: "How to extract a .tar file?", options: ["tar -xvf", "tar -cvf", "untar", "extract -tar"], answer: "tar -xvf" },
+      { q: "How to search for files?", options: ["find", "locate", "which", "all of the above"], answer: "all of the above" },
+      { q: "What is the command to show manual pages?", options: ["man", "manual", "help", "info"], answer: "man" },
+      { q: "How to schedule a one-time task?", options: ["at", "cron", "runonce", "once"], answer: "at" },
+      { q: "What does 'cron' do?", options: ["schedules recurring tasks", "runs backup", "starts programs", "clears logs"], answer: "schedules recurring tasks" },
+      { q: "Which command is used to show network configuration?", options: ["ifconfig", "netstat", "ipconfig", "config"], answer: "ifconfig" },
+      { q: "How do you change file timestamps?", options: ["touch", "stamp", "timechange", "date"], answer: "touch" },
+      { q: "What is 'alias' used for?", options: ["shorten commands", "rename files", "link scripts", "run shells"], answer: "shorten commands" },
+      { q: "How do you show environment variables?", options: ["env", "printenv", "set", "all of the above"], answer: "all of the above" },
+      { q: "Which command is used to shut down the system?", options: ["shutdown", "poweroff", "halt", "all of the above"], answer: "all of the above" },
+      { q: "How do you switch users in Linux?", options: ["su", "sudo", "switch", "login"], answer: "su" }
+    ];
+
+    const questionContainer = document.getElementById("questions");
+
+    questions.forEach((q, index) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `
+        <p><strong>Q${index + 1}:</strong> ${q.q}</p>
+        ${q.options.map((opt, i) => `<label><input type="radio" name="q${index}" value="${opt}"> ${opt}</label><br>`).join('')}
+        <div class="answer-feedback" id="feedback-${index}"></div>
+      `;
+      questionContainer.appendChild(div);
+    });
+
+    document.getElementById("quizForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      questions.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        const feedback = document.getElementById(`feedback-${index}`);
+
+        if (!selected) {
+          feedback.innerHTML = `<span class="wrong">No answer selected</span>. Correct answer: <strong>${q.answer}</strong>`;
+        } else if (selected.value === q.answer) {
+          feedback.innerHTML = `<span class="correct">Correct!</span>`;
+        } else {
+          feedback.innerHTML = `<span class="wrong">Wrong!</span> Correct answer: <strong>${q.answer}</strong>`;
+        }
+      });
+    });
+  </script>
+</body>
+</html>
